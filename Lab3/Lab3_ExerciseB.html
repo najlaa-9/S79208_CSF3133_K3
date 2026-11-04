@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Ticket Booking</title>
+</head>
+<body>
+
+    <!--
+    ============================================================================
+    LIST OF IDENTIFIED AND CORRECTED ERRORS FROM ORIGINAL GIVEN CODE:
+    ============================================================================
+    1. Line 1:  <!DOCTYPE> is incomplete. Corrected to <!DOCTYPE html>.
+    2. Line 9:  Nested tags closing order issue: <h1>e-Ticket <span>Your Campus Cinema</h1></span>. 
+                Corrected to <h1>e-Ticket <span>Your Campus Cinema</span></h1>.
+    3. Line 11 & Line 36: Used <span id="content"> to wrap block elements (<h2>, <p>, <form>). 
+                Corrected to <div id="content"> because <span> is an inline element.
+    4. Line 13: Unescaped '<' symbol in text: "tickets < RM10". 
+                Corrected to "tickets < RM10".
+    5. Line 14: String concatenation issue in JS oninput attribute: adult.value + child.value 
+                resulted in "23" instead of 5. Corrected using parseInt():
+                parseInt(adult.value || 0) + parseInt(child.value || 0).
+    6. Line 18: Misspelled input type: type="emial". Corrected to type="email".
+    7. Line 22 & Line 23: Datalist connection mismatch. Input used list="movies", but datalist 
+                had id="movielist". Corrected datalist ID to id="movies".
+    8. Line 32: Inverted range slider bounds: min="5" max="1". Corrected to min="1" max="5".
+    9. Line 33: Output 'for' attribute mismatch: for="adult kid" referenced 'kid' which doesn't exist. 
+                Corrected to for="adult child".
+    10. Line 38: Invalid HTML entity: &Copy;. Corrected to ©.
+    11. Line 41: Stray code/text after body tag: "54 </body>". Removed stray "54".
+    ============================================================================
+    -->
+
+    <!-- Header Section -->
+    <div id="header">
+        <h1>e-Ticket <span>Your Campus Cinema</span></h1>
+    </div>
+
+    <!-- Main Content Section -->
+    <div id="content">
+        <h2>Book Your Ticket</h2>
+        <p>Promotion: tickets &lt; RM10 for students &amp; staff!</p>
+
+        <!-- Ticket Booking Form -->
+        <form action="booking.php" oninput="
+            total.value = parseInt(adult.value || 0) + parseInt(child.value || 0);
+            price.value = (parseInt(adult.value || 0) * 12) + (parseInt(child.value || 0) * 8);
+        ">
+            <!-- Customer Information -->
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name" required autofocus><br>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 012-3456789" required><br>
+
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" required><br>
+
+            <!-- Show Details -->
+            <label for="date">Show date:</label>
+            <input type="date" id="date" name="date"><br>
+
+            <label for="time">Show time:</label>
+            <input type="time" id="time" name="time"><br>
+
+            <label for="movie">Movie:</label>
+            <input id="movie" name="movie" list="movies"><br>
+            <datalist id="movies">
+                <option value="Space Rangers">
+                <option value="Kampung Comedy">
+                <option value="Campus Detective">
+            </datalist>
+
+            <!-- Ticket Quantities -->
+            <label for="adult">Adult tickets (RM 12 each):</label>
+            <input type="number" id="adult" name="adult" value="0" min="0"><br>
+
+            <label for="child">Child tickets (RM 8 each):</label>
+            <input type="number" id="child" name="child" value="0" min="0"><br>
+
+            <!-- Ratings -->
+            <label for="rating">Rate our service:</label>
+            <input type="range" id="rating" name="rating" min="1" max="5"><br>
+
+            <!-- Calculated Outputs -->
+            Total tickets: <output name="total" for="adult child">0</output><br>
+            Total price (RM): <output name="price" for="adult child">0</output><br><br>
+
+            <input type="submit" value="Book Now">
+        </form>
+    </div>
+
+    <!-- Extended Section: Sidebar -->
+    <div id="sidebar">
+        <h3>Now Showing</h3>
+        <ul>
+            <li>
+                <strong>Space Rangers</strong> <span>(PG-13)</span> - 
+                <a href="https://example.com/trailer1" target="_blank">Watch Trailer</a>
+            </li>
+            <li>
+                <strong>Kampung Comedy</strong> <span>(U)</span> - 
+                <a href="https://example.com/trailer2" target="_blank">Watch Trailer</a>
+            </li>
+            <li>
+                <strong>Campus Detective</strong> <span>(P13)</span> - 
+                <a href="https://example.com/trailer3" target="_blank">Watch Trailer</a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Footer Section -->
+    <div id="footer">
+        <p>© 2026 CineKampus. All rights reserved.</p>
+        <p>e-Ticket® – Campus Cinema &lt; RM10 every Tuesday &amp; Thursday!</p>
+    </div>
+
+</body>
+</html>
