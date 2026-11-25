@@ -1,0 +1,70 @@
+/* Page Style */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 20px;
+}
+
+/* Header */
+header {
+    background-color: #1e4d72;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+}
+
+/* Buttons */
+button {
+    background-color: #2979ff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #1565c0;
+}
+
+/* Images */
+.images {
+    display: flex;
+    justify-content: center;
+    gap: 100px;
+    margin-top: 20px;
+}
+
+img {
+    width: 120px;
+    height: 120px;
+    border: 1px solid gray;
+}
+
+/* Table */
+table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+th {
+    background-color: #1e4d72;
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+}
+
+/* Footer */
+footer {
+    margin-top: 30px;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
